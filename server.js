@@ -75,11 +75,11 @@ const requestListener = function (request, response) {
 function renderPage(pathname) {
     let html = "This Page is empty. Maybe it didn't render?";
     let name =pathname.split(".")[0];
+    let ejspath = "./sites/"+name +".ejs";
     console.log("rendering ./sites/"+name +".ejs")
     try {
-        let contents =fs.readFileSync("./sites/"+name +".ejs");
-        html = ejs.render(contents.toString(),null,{views:[process.cwd()]});
-
+        let contents =fs.readFileSync(ejspath);
+        html = ejs.render(contents.toString(),null,{filename: ejspath});//{views:["./"]});
     }
     catch (error) {
         console.error(error);
