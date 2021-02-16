@@ -78,7 +78,7 @@ function renderPage(pathname) {
     console.log("rendering ./sites/"+name +".ejs")
     try {
         let contents =fs.readFileSync("./sites/"+name +".ejs");
-        html = ejs.render(contents.toString());
+        html = ejs.render(contents.toString(),null,{views:[process.cwd()]});
 
     }
     catch (error) {
